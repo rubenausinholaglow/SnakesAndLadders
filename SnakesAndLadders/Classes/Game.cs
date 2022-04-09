@@ -21,7 +21,5 @@
         {
             return Players.FirstOrDefault(p => p.Position == 100);
         }
-
-
     }
 }
