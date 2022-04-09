@@ -1,4 +1,4 @@
-﻿namespace SnakesAndLadders
+﻿namespace SnakesAndLadders.Classes
 {
     public class Player
     {
@@ -11,9 +11,12 @@
             Position = 1;
         }
 
-        public int MovePlayer(int movement)
+        public void MovePlayer(int movement)
         {
-            return Position += movement;
+            if(Position + movement < 101)
+            {
+                Position += movement;
+            }
         }
     }
 
