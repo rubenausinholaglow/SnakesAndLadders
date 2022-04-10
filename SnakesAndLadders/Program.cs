@@ -1,7 +1,5 @@
 ﻿using SnakesAndLadders.Classes;
 
-Console.WriteLine("Hello, World!");
-
 var NewGame = new Game();
 
 Console.WriteLine("Enter Number of Players: ");
