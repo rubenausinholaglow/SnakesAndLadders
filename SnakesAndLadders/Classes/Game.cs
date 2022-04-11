@@ -6,10 +6,13 @@
 
         public List<Player> Players { get; set; }
 
+        private readonly GameCollections _gameCollections;
+
 
         public Game()
         {
             Players = new List<Player>();
+            _gameCollections = new GameCollections();
         }
 
         public void CheckWinCondition()
@@ -55,6 +58,8 @@
                 {
                     if (!IsFinished)
                     {
+                        Console.WriteLine($"Enter to roll for {Players[i].Name}: ");
+                        Console.ReadLine();
                         PlayerRoll(Players[i].Name);
                     }                    
                 }
@@ -63,15 +68,15 @@
 
         public void CheckSnakesAndLadders(Player player)
         {
-            if (GameCollections.Snakes.Any(a => a.Key == player.Position))
+            if (_gameCollections.Snakes.Any(a => a.Key == player.Position))
             {
-                var snake = GameCollections.Snakes.FirstOrDefault(a => a.Key == player.Position);
+                var snake = _gameCollections.Snakes.FirstOrDefault(a => a.Key == player.Position);
                 player.Position = snake.Value;
                 Console.WriteLine($"A Snake took {player.Name} and dragged from {snake.Key} to {snake.Value}");
             }
-            if (GameCollections.Ladders.Any(a => a.Key == player.Position))
+            if (_gameCollections.Ladders.Any(a => a.Key == player.Position))
             {
-                var ladder = GameCollections.Ladders.FirstOrDefault(a => a.Key == player.Position);
+                var ladder = _gameCollections.Ladders.FirstOrDefault(a => a.Key == player.Position);
                 player.Position = ladder.Value;
                 Console.WriteLine($"{player.Name} climbed a ladder from {ladder.Key} to {ladder.Value}");
             }
